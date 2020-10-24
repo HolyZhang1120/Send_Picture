@@ -13,14 +13,14 @@
 #include <stdbool.h>
 
 //远程升级端口	
-//#define Upgrade_PORTNUM 	"12550"
+#define Upgrade_PORTNUM 	"40204"
 ////远程升级服务器IP
-//#define Upgrade_SERVERIP 	"cn-zj-dx.sakurafrp.com"
+#define Upgrade_SERVERIP 	"cn-zj-dx.sakurafrp.com"
 
 //远程升级端口	
-#define Upgrade_PORTNUM 	"25052"
+//#define Upgrade_PORTNUM 	"25052"
 //远程升级服务器IP
-#define Upgrade_SERVERIP 	"192.168.2.105"
+//#define Upgrade_SERVERIP 	"192.168.2.105"
 
 u32 Crc_file;
 bool Upgrade_Flag = false;
@@ -156,9 +156,10 @@ void Upgrade(void)
 			connect_server();
 			Size = Get_Upgrade_size();
 			k++;
-			if(k==10)
+			if(k==3)
 			{
 				k = 0;
+				Upgrade_Flag = false;
 				printf("Get Size err\r\n");
 				break;
 			}
@@ -232,7 +233,7 @@ void Upgrade(void)
 			printf("固件正确\r\n");
 			Crc_file = 0;
 			Upgrade_Flag = false;
-			Upgrade_Flag_net = false;
+//			Upgrade_Flag_net = false;
 			write_buf2[0] = 0xF6;
 			write_buf2[1] = Size >> 16;
 			write_buf2[2] = Size >> 8;

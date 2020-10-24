@@ -57,3 +57,4 @@
 ..\obj\main.o: ..\HARDWARE\USART3\usart3.h
 ..\obj\main.o: ..\ATK-ESP8266\wifista.h
 ..\obj\main.o: ..\ATK-ESP8266\Upgrade.h
+..\obj\main.o: ..\HARDWARE\TIMER\timer.h

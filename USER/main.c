@@ -17,6 +17,7 @@
 #include "usart3.h"
 #include "wifista.h"
 #include "Upgrade.h"
+#include "timer.h"
  
 /************************************************
  ALIENTEK精英STM32开发板实验38
@@ -73,7 +74,7 @@ u16 pic_get_tnum(u8 *path)
 	u16 temp;
 	u16 *picindextbl;	//图片索引表 
 	 
-	SCB->VTOR = FLASH_BASE | 0x9000; /* Vector Table Relocation in Internal FLASH. */
+	SCB->VTOR = FLASH_BASE | 0x5000; /* Vector Table Relocation in Internal FLASH. */
 	 
 	delay_init();	    	 //延时函数初始化	  
   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置中断优先级分组为组2：2位抢占优先级，2位响应优先级
@@ -90,6 +91,7 @@ u16 pic_get_tnum(u8 *path)
 	POINT_COLOR=RED;    
 
 	usart3_init(115200);		//初始化串口3 
+	TIM3_Int_Init(4999,7199);//10Khz的计数频率，计数到5000为500ms
 	atk_8266_wifista_config();
 	printf("wifi init ok!");
 	while(connect_server())
@@ -103,7 +105,6 @@ u16 pic_get_tnum(u8 *path)
 			break;
 		}
 	}
-	
 //	Upgrade();
 	
 	while(font_init()) 		//检查字库
@@ -183,6 +184,13 @@ u16 pic_get_tnum(u8 *path)
 		t=0;
 		while(1) 
 		{
+			if(up_flag)
+			{
+				Upgrade();
+				up_flag=0;
+				TIM_Cmd(TIM3, ENABLE);
+			}
+			
 			key=KEY_Scan(0);		//扫描按键
 			if(t>250)key=1;			//模拟一次按下KEY0    
 			if((t%20)==0)LED0=!LED0;//LED0闪烁,提示程序正在运行.
