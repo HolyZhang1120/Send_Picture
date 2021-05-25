@@ -94,6 +94,7 @@ u16 pic_get_tnum(u8 *path)
 	TIM3_Int_Init(4999,7199);//10Khz的计数频率，计数到5000为500ms
 	atk_8266_wifista_config();
 	printf("wifi init ok!");
+	Upgrade();
 	while(connect_server())
 	{
 		delay_ms(10);

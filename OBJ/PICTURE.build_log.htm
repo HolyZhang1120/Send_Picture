@@ -21,14 +21,24 @@ Target DLL:      Segger\JL2CM3.dll V2.99.26.0
 Dialog DLL:      TARMSTM.DLL V1.66.0.0
  
 <h2>Project:</h2>
-E:\study\4¡¢wifiÉý¼¶\Í¼Æ¬´«Êä\USER\PICTURE.uvprojx
+E:\study\4¡¢wifiÉý¼¶\STM32_IAP\Send_Picture\USER\PICTURE.uvprojx
 Project File Date:  10/24/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'PICTURE'
+compiling Upgrade.c...
+..\ATK-ESP8266\Upgrade.c(55): warning:  #177-D: variable "k"  was declared but never referenced
+  	u16 i=0,j=0,k;
+..\ATK-ESP8266\Upgrade.c(257): warning:  #177-D: variable "kk"  was declared but never referenced
+  	u16 i,kk;
+..\ATK-ESP8266\Upgrade.c: 2 warnings, 0 errors
+compiling main.c...
+linking...
+Program Size: Code=89488 RO-data=11160 RW-data=524 ZI-data=61376  
+FromELF: creating hex file...
 After Build - User command #1: D:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin -o "..\OBJ\PICTURE.bin" "..\OBJ\PICTURE.axf"
-"..\OBJ\PICTURE.axf" - 0 Error(s), 0 Warning(s).
+"..\OBJ\PICTURE.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -42,7 +52,7 @@ Package Vendor: Keil
   D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

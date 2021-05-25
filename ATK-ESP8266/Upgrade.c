@@ -138,7 +138,7 @@ void Upgrade(void)
 {
 	u32 crc32_file,Size;
 	u16 size_num,j;	
-	u8 pack,i,k,*write_buf1,*write_buf,write_buf2[4] = {0};	
+	u8 pack,i,k=0,*write_buf1,*write_buf,write_buf2[4] = {0};	
   bool Upgrade_Flag_net = true;
 	
 	if(Upgrade_Flag_net == true)
